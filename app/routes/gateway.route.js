@@ -1,18 +1,22 @@
 var Controller = require('../controllers/gateway.controller');
 var express = require('express');
-var Router = express.router();
+var Router = express.Router();
 
 Router
   .post('/signup', Controller.signUp)
 
   .post('/login', Controller.login)
 
-  .get('/:users/comments')
+  // .get('/:user', Controller.getUser)
 
-  .post('/:users/comments')
+  .get('/comments', Controller.getAllComments)
 
-  .get('/:users/comments/:name')
+  .post('/comments', Controller.createComment)
 
-  .put('/:users/comments/:name')
+  .get('/comments/:name', Controller.getUserComment)
 
-  .delete('/:users/comments/:name');
+  .put('/comments/:name', Controller.updateUserComment)
+
+  .delete('/comments/:name', Controller.deleteUserComment);
+
+module.exports = Router;
